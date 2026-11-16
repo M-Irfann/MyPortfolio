@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhammad Irfan Nugroho — Portfolio</title>
+<meta name="description" content="Portfolio Muhammad Irfan Nugroho: desain ilustrasi, pengembangan web, dan project freelance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#D9481C;--bg:#FFFFFF;--soft:#FBF6F1;--ink:#1c1c1c;--mute:#6b6b6b;--line:#ece4dc;--r:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:700;font-size:15px}
+.logo span{color:var(--accent)}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;display:block}
+.dots i:nth-child(1){background:#e8402a}.dots i:nth-child(2){background:#f5b82e}.dots i:nth-child(3){background:#4cc24a}
+nav ul{display:flex;gap:28px;list-style:none;font-size:14px;font-weight:500}
+nav a:hover{color:var(--accent)}
+.burger{display:none;background:none;border:0;font-size:24px;cursor:pointer;color:var(--ink)}
+
+/* hero */
+.hero{position:relative;min-height:340px;display:flex;align-items:center;background:#cfe3e8 url(images/hero.webp) center/cover}
+.hero .wrap{width:100%}
+.tag{display:inline-block;background:var(--accent);color:#fff;font-weight:700;letter-spacing:.04em;line-height:1.1;padding:10px 20px;font-size:clamp(34px,6vw,60px)}
+.tag.light{background:#fff;color:var(--accent);margin-top:6px}
+
+/* sections */
+section{padding:72px 0}
+.badge{display:inline-block;background:var(--accent);color:#fff;font-weight:600;font-size:20px;padding:2px 22px;border-radius:8px;margin-bottom:22px}
+.about{background:var(--soft);border-radius:var(--r);padding:40px;display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:center}
+.photo{aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:#f0a63a}
+.photo img{width:100%;height:100%;object-fit:cover}
+.about small{display:block;color:var(--mute);font-size:15px}
+.about h1{font-size:clamp(24px,3.4vw,34px);line-height:1.25;margin-bottom:4px}
+.role{color:var(--accent);font-weight:500;margin-bottom:16px}
+.about p{color:#3a3a3a;font-size:15px;margin-bottom:12px}
+.contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.contacts a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 16px;font-size:13px;font-weight:500}
+.contacts a:hover{border-color:var(--accent);color:var(--accent)}
+
+.info{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px}
+.card{border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.card h3{font-size:17px;margin-bottom:14px}
+.card h3::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent);margin-right:10px}
+.row{display:grid;grid-template-columns:130px 1fr;gap:10px;font-size:14px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border:0}.row b{font-weight:500;color:var(--mute)}
+.edu .row{grid-template-columns:110px 1fr}.edu .row b{color:var(--accent);font-weight:600}
+
+/* projects */
+.head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.head h2{font-size:clamp(24px,4vw,34px)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font:inherit;font-size:13px;font-weight:500;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 18px;cursor:pointer}
+.filters button.on,.filters button:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proj{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff;cursor:pointer;transition:.25s}
+.proj:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.proj .th{aspect-ratio:4/3;background:#f4efe9;overflow:hidden}
+.proj .th img{width:100%;height:100%;object-fit:cover}
+.proj .th.contain img{object-fit:contain;background:#fff;padding:14px}
+.proj .tx{padding:16px 18px 20px}
+.proj small{color:var(--accent);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.proj h3{font-size:16px;line-height:1.35;margin:2px 0 6px}
+.proj p{font-size:13px;color:var(--mute);line-height:1.6}
+.proj.hide{display:none}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(15,15,15,.82);display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.box{background:#fff;border-radius:var(--r);max-width:960px;width:100%;max-height:92vh;overflow:auto;padding:26px}
+.box h3{font-size:22px}.box small{color:var(--accent);font-weight:600}
+.box p{color:#444;font-size:14px;margin:8px 0 18px}
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.shots img{width:100%;border-radius:12px;border:1px solid var(--line);background:#fff}
+.shots.one{grid-template-columns:1fr}
+.close{float:right;border:0;background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;margin-left:12px}
+
+/* contact */
+.contact{background:var(--accent);color:#fff;border-radius:var(--r);padding:48px 32px;text-align:center}
+.contact h2{font-size:clamp(24px,4vw,34px)}
+.contact p{opacity:.9;margin:6px 0 22px}
+.contact .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.contact a{background:#fff;color:var(--accent);font-weight:600;font-size:14px;padding:10px 24px;border-radius:999px}
+footer{text-align:center;color:var(--mute);font-size:13px;padding:28px 0 40px}
+
+/* tablet & mobile */
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.info{grid-template-columns:1fr}}
+@media(max-width:720px){
+ .burger{display:block}
+ nav ul{position:absolute;top:60px;left:0;right:0;background:#fff;flex-direction:column;gap:0;border-bottom:1px solid var(--line);display:none}
+ nav ul.open{display:flex}
+ nav li a{display:block;padding:14px 24px;border-top:1px solid var(--line)}
+ section{padding:48px 0}
+ .wrap{padding:0 18px}
+ .hero{min-height:240px}
+ .about{grid-template-columns:1fr;padding:26px 22px;gap:24px;text-align:center}
+ .photo{max-width:230px;margin:0 auto}
+ .contacts{justify-content:center}
+ .grid{grid-template-columns:1fr}
+ .row,.edu .row{grid-template-columns:100px 1fr}
+ .shots{grid-template-columns:1fr}
+ .head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap nav">
+  <a href="#home" class="logo">Irfan<span>.</span>Nugroho</a>
+  <nav>
+    <ul id="menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#data">Data Diri</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="dots"><i></i><i></i><i></i></div>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+</div></header>
+
+<div class="hero" id="home"><div class="wrap">
+  <span class="tag">PORT</span><br><span class="tag light">FOLIO</span>
+</div></div>
+
+<section id="about" style="padding-top:48px"><div class="wrap">
+  <div class="about">
+    <div class="photo"><img src="images/foto.jpg" alt="Foto Muhammad Irfan Nugroho"></div>
+    <div>
+      <span class="badge">About</span>
+      <small>Hello I’m</small>
+      <h1>Muhammad Irfan Nugroho</h1>
+      <div class="role">Suka Desain And Coding</div>
+      <p>Saya lulusan S1 Informatika dengan latar belakang SMK Multimedia. Awalnya saya banyak belajar tentang desain dan multimedia, kemudian mulai tertarik dengan pemrograman dan pengembangan aplikasi, terutama backend.</p>
+      <p>Saya senang mencoba hal baru, membuat project, dan mengikuti lomba untuk menambah pengalaman. Sampai sekarang saya masih menikmati dunia desain, sekaligus terus belajar di bidang programming dan teknologi. Saya terbuka untuk belajar hal baru dan mendapatkan pengalaman di dunia kerja.</p>
+      <div class="contacts">
+        <a href="https://wa.me/628819642109" target="_blank" rel="noopener">WhatsApp · 08819642109</a>
+        <a href="https://instagram.com/irfannn_3" target="_blank" rel="noopener">Instagram · irfannn_3</a>
+        <a href="mailto:irfannugroho320@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/irfan-nugroho-453000222/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="info" id="data">
+    <div class="card">
+      <h3>Data Pribadi</h3>
+      <div class="row"><b>Nama</b><span>Muhammad Irfan Nugroho</span></div>
+      <div class="row"><b>Jenis Kelamin</b><span>Laki-laki</span></div>
+      <div class="row"><b>TTL</b><span>Surabaya, 21 Februari 2004</span></div>
+      <div class="row"><b>Domisili</b><span>Jambangan, Surabaya</span></div>
+      <div class="row"><b>Kewarganegaraan</b><span>Indonesia</span></div>
+      <div class="row"><b>Agama</b><span>Islam</span></div>
+      <div class="row"><b>Status</b><span>Belum Menikah</span></div>
+    </div>
+    <div class="card edu">
+      <h3>Pendidikan</h3>
+      <div class="row"><b>2010 – 2016</b><span>SDN Pagesangan 426 Surabaya</span></div>
+      <div class="row"><b>2016 – 2019</b><span>SMP YPM 1 Taman, Sidoarjo</span></div>
+      <div class="row"><b>2019 – 2022</b><span>SMK YPM 3 Taman, Sidoarjo</span></div>
+      <div class="row"><b>2022 – 2026</b><span>Universitas Maarif Hasyim Latif</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="project" style="padding-top:24px"><div class="wrap">
+  <div class="head">
+    <h2>My <span style="color:var(--accent)">project</span></h2>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">Semua</button>
+      <button data-f="Ilustrasi">Ilustrasi</button>
+      <button data-f="Web & App">Web &amp; App</button>
+      <button data-f="Freelance">Freelance &amp; Event</button>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="contact" style="padding-top:0"><div class="wrap">
+  <div class="contact">
+    <h2>Mari berkolaborasi</h2>
+    <p>Terbuka untuk belajar hal baru dan pengalaman di dunia kerja.</p>
+    <div class="btns">
+      <a href="mailto:irfannugroho320@gmail.com">Kirim Email</a>
+      <a href="https://wa.me/628819642109" target="_blank" rel="noopener">Chat WhatsApp</a>
+    </div>
+  </div>
+</div></section>
+
+<footer>© 2026 Muhammad Irfan Nugroho</footer>
+
+<div class="modal" id="modal"><div class="box" id="box"></div></div>
+
+<script>
+const P=[
+ {t:'Idul Fitri With Family',c:'Ilustrasi',d:'Ilustrasi suasana pagi hari saat Idul Fitri bersama keluarga. Karya ini menggambarkan momen berkumpul dan menikmati suasana hari raya bersama orang-orang terdekat dengan suasana yang hangat dan sederhana. #idulFitriAtshmophere',i:['idul1','idul2']},
+ {t:'Eid Mubarok With Family',c:'Ilustrasi',d:'Ilustrasi momen Idul Fitri bersama keluarga yang sedang menghabiskan waktu di sebuah taman dengan pemandangan pegunungan, untuk menggambarkan suasana kebersamaan keluarga setelah merayakan hari raya.',i:['eid']},
+ {t:'Membawa Negara Ke Masa Depan',c:'Ilustrasi',d:'Ilustrasi sekelompok orang yang bersama-sama berusaha membawa negara menuju masa depan yang lebih baik. Konsepnya menampilkan semangat kerja sama, keadilan, pemerataan, dan kehidupan sosial yang lebih adil.',i:['negara']},
+ {t:'Kereta Melewati Jembatan',c:'Ilustrasi',d:'Ilustrasi sebuah kereta yang melewati jembatan di tepi jurang, dengan perbukitan dan pemandangan alam di sisi kiri. #kai121_',i:['kereta']},
+ {t:'KRL Memasuki Peron Stasiun',c:'Ilustrasi',d:'Ilustrasi KRL memasuki peron stasiun bergaya flat, dengan elemen kereta, peron, jalur rel, dan bangunan stasiun. #kai121_',i:['krl']},
+ {t:'Jembatan Youtefa',c:'Ilustrasi',d:'Ilustrasi Jembatan Youtefa di Jayapura dengan pendekatan flat design yang menyederhanakan bentuk namun tetap mempertahankan karakter utama objek. #youtefa_jayapura',i:['youtefa']},
+ {t:'Confused People',c:'Ilustrasi',d:'Ilustrasi seseorang yang kebingungan menghadapi pekerjaan atau banyak hal yang harus dipikirkan, lewat ekspresi dan elemen pendukung.',i:['confused']},
+ {t:'Technology',c:'Ilustrasi',d:'Ilustrasi seseorang menggunakan smartphone dengan konsep kehidupan masa depan, menggambarkan teknologi sebagai bagian dari aktivitas sehari-hari.',i:['tech']},
+ {t:'Working',c:'Ilustrasi',d:'Ilustrasi seseorang yang sedang bekerja menggunakan komputer, lengkap dengan meja, komputer, dan perlengkapan kerja.',i:['working']},
+ {t:'Meeting With Friends',c:'Ilustrasi',d:'Ilustrasi beberapa orang yang berkumpul dan berdiskusi bersama, menggambarkan pertemuan santai, interaktif, dan komunikasi antaranggota kelompok.',i:['meet1','meet2','meet3','meet4']},
+ {t:'Dermaga, Alam & Gerhana Matahari',c:'Ilustrasi',d:'Tiga ilustrasi pemandangan: Dermaga, Alam, dan Gerhana Matahari.',i:['dermaga','alam','gerhana'],one:1},
+ {t:'FAPAR Laundry Business',c:'Web & App',d:'Aplikasi pengelolaan usaha laundry: login, data pelanggan, dan input data transaksi.',i:['laundry1','laundry2','laundry3','laundry4'],tall:1},
+ {t:'Management Timesheet — Atria',c:'Web & App',d:'Sistem manajemen timesheet: absensi, kalender, rekap kehadiran, daftar karyawan, dan rekap timesheet.',i:['atria1','atria2','atria3','atria4']},
+ {t:'MyTicket',c:'Web & App',d:'Aplikasi pemesanan tiket kereta api: login, daftar kereta, review pemesanan, dan detail tiket.',i:['ticket1','ticket2','ticket3','ticket4']},
+ {t:'Logo KKN UMAHA 2024',c:'Freelance',d:'Desain logo KKN UMAHA 2024 Dusun Kaliwungu.',i:['kkn'],contain:1},
+ {t:'Logo Andara Living',c:'Freelance',d:'Desain logo Andara Living.',i:['andara'],contain:1},
+ {t:'Logo BPMP Nusa Tenggara Timur',c:'Freelance',d:'Desain logo BPMP Nusa Tenggara Timur dalam versi terang dan gelap.',i:['bpmp'],contain:1},
+ {t:'Poster Gatry Premium Series',c:'Freelance',d:'Poster promosi produk Premium Body Lotion & Premium AHA Body Serum.',i:['gatry1','gatry2','gatry3']},
+ {t:'Merchandise & Mockup Logo',c:'Freelance',d:'Mockup penerapan logo pada seragam dan kemeja.',i:['merch1','merch2','merch3']}
+];
+const grid=document.getElementById('grid'),modal=document.getElementById('modal'),box=document.getElementById('box');
+grid.innerHTML=P.map((p,n)=>`<article class="proj" data-c="${p.c}" data-n="${n}">
+ <div class="th ${p.contain?'contain':''}"><img loading="lazy" src="images/${p.i[0]}.webp" alt="${p.t}"></div>
+ <div class="tx"><small>${p.c==='Freelance'?'Freelance & Event':p.c}</small><h3>${p.t}</h3><p>${p.d.length>90?p.d.slice(0,88)+'…':p.d}</p></div></article>`).join('');
+grid.addEventListener('click',e=>{
+  const a=e.target.closest('.proj'); if(!a) return;
+  const p=P[a.dataset.n];
+  box.innerHTML=`<button class="close" aria-label="Tutup">×</button><small>${p.c}</small><h3>${p.t}</h3><p>${p.d}</p>
+   <div class="shots ${p.i.length===1||p.one?'one':''}">${p.i.map(i=>`<img loading="lazy" src="images/${i}.webp" alt="${p.t}">`).join('')}</div>`;
+  modal.classList.add('open');document.body.style.overflow='hidden';
+});
+const shut=()=>{modal.classList.remove('open');document.body.style.overflow=''};
+modal.addEventListener('click',e=>{if(e.target===modal||e.target.classList.contains('close'))shut()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
+document.getElementById('filters').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.proj').forEach(c=>c.classList.toggle('hide',b.dataset.f!=='all'&&c.dataset.c!==b.dataset.f));
+});
+const menu=document.getElementById('menu');
+document.getElementById('burger').onclick=()=>menu.classList.toggle('open');
+menu.addEventListener('click',()=>menu.classList.remove('open'));
+</script>
+</body>
+</html>
